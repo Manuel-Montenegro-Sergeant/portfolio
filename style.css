@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(197, 178, 178);
+    margin: 0;
+}
+
+head {
+    background-color: rgb(187, 78, 78);
+    margin: 0;
+}
+
+header {
+    text-align: center;
+}
+
+li {
+    display: inline;
+}
