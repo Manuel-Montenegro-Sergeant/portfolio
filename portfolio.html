@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Manuel Montenegro-Sergeant</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f7f5f2;
+    --text: #1a1a18;
+    --muted: #888880;
+    --border: #e0ddd8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* NAV */
+  nav { padding: 40px 0 0; margin-bottom: 80px; }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 16px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 300;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  #hero {
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 80px;
+  }
+
+  .hero-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin-bottom: 28px;
+  }
+
+  .hero-title em { font-style: italic; color: var(--muted); }
+
+  .hero-desc {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+
+  .meta-item {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .meta-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--border);
+    display: inline-block;
+  }
+
+  /* SECTIONS */
+  .section { margin-bottom: 80px; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .section-num { font-size: 12px; color: var(--muted); font-weight: 300; }
+
+  /* ABOUT */
+  .about-text p {
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 16px;
+    line-height: 1.85;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+
+  /* PROJECTS */
+  .project {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .project:first-child { border-top: 1px solid var(--border); }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    gap: 16px;
+  }
+
+  .project-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .project-year { font-size: 12px; color: var(--muted); font-weight: 300; white-space: nowrap; }
+
+  .project-desc {
+    color: var(--muted);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .project-techs { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tech {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+
+  /* UPCOMING */
+  .upcoming {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    opacity: .45;
+  }
+  .upcoming:first-child { border-top: 1px solid var(--border); }
+
+  .upcoming-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .upcoming-name {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  /* SKILLS */
+  .skills-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  .skill-group-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+
+  .skill-list li { font-size: 14px; font-weight: 300; color: var(--text); }
+
+  /* CONTACT */
+  .contact-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 300;
+    transition: color .2s;
+  }
+  .contact-link:first-child { border-top: 1px solid var(--border); }
+  .contact-link:hover { color: var(--muted); }
+
+  .contact-link svg {
+    width: 14px; height: 14px;
+    stroke: currentColor; fill: none; stroke-width: 1.5;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 0 60px;
+    border-top: 1px solid var(--border);
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .fade { opacity: 0; animation: fadeIn .6s ease forwards; }
+  .fade:nth-child(1) { animation-delay: .1s; }
+  .fade:nth-child(2) { animation-delay: .22s; }
+  .fade:nth-child(3) { animation-delay: .34s; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .skills-row { grid-template-columns: 1fr; gap: 28px; }
+    .project-header { flex-direction: column; gap: 4px; }
+    footer { flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-name" href="#hero">Manuel Montenegro-Sergeant</a>
+      <div class="nav-links">
+        <a href="#about">Profil</a>
+        <a href="#projects">Projets</a>
+        <a href="#skills">Compétences</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <h1 class="hero-title fade">
+      Étudiant en<br/>
+      <em>Intelligence Artificielle</em>
+    </h1>
+    <p class="hero-desc fade">
+      Bachelor Science & Ingénierie — IA au CESI de Rouen.
+      Je conçois des outils mêlant développement web, applications desktop et systèmes IA.
+    </p>
+    <div class="hero-meta fade">
+      <span class="meta-item"><span class="meta-dot"></span>Rouen, France</span>
+      <span class="meta-item"><span class="meta-dot"></span>1ère année</span>
+      <span class="meta-item"><span class="meta-dot"></span>Promotion 2025–2028</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <div class="section reveal" id="about">
+    <div class="section-header">
+      <h2 class="section-title">Profil</h2>
+      <span class="section-num">01</span>
+    </div>
+    <div class="about-text">
+      <p>Je suis <strong>Manuel Montenegro-Sergeant</strong>, étudiant en première année de Bachelor en Science et Ingénierie spécialité <strong>Intelligence Artificielle</strong> au CESI de Rouen.</p>
+      <p>Mon parcours est volontairement polyvalent : j'ai déjà touché au développement web, aux applications desktop et à la vision par ordinateur. Je crois qu'un bon profil IA doit comprendre toute la chaîne, du front-end au modèle.</p>
+      <p>Autonome et curieux, je construis des projets concrets dès la première année. D'ici quelques mois, je travaillerai sur des systèmes IA plus ambitieux.</p>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section reveal" id="projects">
+    <div class="section-header">
+      <h2 class="section-title">Projets</h2>
+      <span class="section-num">02</span>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-name">CESI Bike</span>
+        <span class="project-year">2025 — Académique</span>
+      </div>
+      <p class="project-desc">Système de gestion industrielle complet : chronomètre de suivi de production, interface Python et base de données couplée à une interface web. Un projet full-stack appliqué à un contexte industriel réel.</p>
+      <div class="project-techs">
+        <span class="tech">Python</span>
+        <span class="tech">Base de données</span>
+        <span class="tech">Interface Web</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-name">Reconnaissance d'objets</span>
+        <span class="project-year">2025 — Vision par ordinateur</span>
+      </div>
+      <p class="project-desc">Pipeline de détection et de classification d'objets en temps réel. Implémentation avec YOLO intégré à OpenCV pour le traitement de flux vidéo.</p>
+      <div class="project-techs">
+        <span class="tech">Python</span>
+        <span class="tech">OpenCV</span>
+        <span class="tech">YOLO</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <span class="project-name">Assistant conversationnel local</span>
+        <span class="project-year">2026 — IA générative</span>
+      </div>
+      <p class="project-desc">Agent conversationnel entièrement local, sans dépendance au cloud. Propulsé par Ollama (LLM open-source), avec une interface graphique développée en PySide6.</p>
+      <div class="project-techs">
+        <span class="tech">Python</span>
+        <span class="tech">Ollama</span>
+        <span class="tech">LLM</span>
+        <span class="tech">PySide6</span>
+      </div>
+    </div>
+
+    <div class="upcoming">
+      <p class="upcoming-label">En cours — 2026</p>
+      <p class="upcoming-name">Plateforme Web F1 Interactive</p>
+      <p class="project-desc" style="margin-top:10px;">Site web temps réel inspiré de la F1 : suivi de course en direct, visualisation des pilotes sur circuit et chatbot IA d'analyse de course. Stack Next.js, FastAPI, Leaflet et LLM.</p>
+      <div class="project-techs" style="margin-top:10px;">
+        <span class="tech">Next.js</span>
+        <span class="tech">FastAPI</span>
+        <span class="tech">Python</span>
+        <span class="tech">Leaflet</span>
+        <span class="tech">LLM</span>
+        <span class="tech">API F1</span>
+      </div>
+    </div>
+    <div class="upcoming">
+      <p class="upcoming-label">En cours — 2026</p>
+      <p class="upcoming-name">Infrastructure Réseau & Cisco</p>
+      <p class="project-desc" style="margin-top:10px;">Conception et déploiement d'un réseau complet from scratch : architecture, configuration d'équipements Cisco via Packet Tracer et exploration d'autres outils de simulation réseau.</p>
+      <div class="project-techs" style="margin-top:10px;">
+        <span class="tech">Cisco Packet Tracer</span>
+        <span class="tech">Réseau</span>
+        <span class="tech">Infrastructure</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section reveal" id="skills">
+    <div class="section-header">
+      <h2 class="section-title">Compétences</h2>
+      <span class="section-num">03</span>
+    </div>
+    <div class="skills-row">
+      <div>
+        <p class="skill-group-title">Langages & outils</p>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>JavaScript</li>
+          <li>HTML / CSS</li>
+          <li>SQL</li>
+          <li>PySide6</li>
+        </ul>
+      </div>
+      <div>
+        <p class="skill-group-title">IA & domaines</p>
+        <ul class="skill-list">
+          <li>OpenCV</li>
+          <li>YOLO</li>
+          <li>LLM / Ollama</li>
+          <li>Vision par ordinateur</li>
+          <li>Développement web</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section reveal" id="contact">
+    <div class="section-header">
+      <h2 class="section-title">Contact</h2>
+      <span class="section-num">04</span>
+    </div>
+    <div>
+      <a href="mailto:manuelmtng@gmail.com" class="contact-link">
+        manuelmtng@gmail.com
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/manuel-m-49b57435a" target="_blank" class="contact-link">
+        LinkedIn
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="https://github.com/Manuel-Montenegro-Sergeant" target="_blank" class="contact-link">
+        GitHub
+        <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span>Manuel Montenegro-Sergeant</span>
+    <span>Bachelor IA — CESI Rouen, 2025–2028</span>
+  </footer>
+
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
